@@ -18,10 +18,10 @@ config.email.ccList = '';
 
 // set up the server
 var server = email.server.connect({
-	user:     config.email.userAccount,
+	user: config.email.userAccount,
 	password: config.email.userPassword,
-	host:     config.email.smpt,
-	ssl:     true
+	host: config.email.smpt,
+	ssl: true
 });
 
 /* *************************** Public Methods ****************************** */
@@ -34,10 +34,10 @@ var server = email.server.connect({
 function send( subject, body ){
 
 	server.send({
-		text:    body,
-		from:    config.email.userAccount,
-		to:      config.email.sendList,
-		cc:      config.email.ccList,
+		text: body,
+		from: config.email.userAccount,
+		to: config.email.sendList,
+		cc: config.email.ccList,
 		subject: subject
 	}, function( err, message ) {
 
