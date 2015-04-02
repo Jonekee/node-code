@@ -136,11 +136,11 @@ function broadCastFayeData( fayeData, type ){
 
 	switch( type ) {
 		case 'channel1':
-			fayeChannel = config.faye.radioChannel;
+			fayeChannel = config.faye.someChannel;
 			break;
 
 		case 'channel2':
-			fayeChannel = config.faye.newsChannel;
+			fayeChannel = config.faye.anotherChannel;
 			break;
 	}
 

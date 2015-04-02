@@ -7,9 +7,7 @@
 'use strict';
 
 /* *************************** Required Classes **************************** */
-var meanio = require('meanio');
 var email = require('./Email.js');
-var log = require('./Logger.js');
 
 /* *************************** Constructor Code **************************** */
 var config = {}; // this should be your applications configuration object
@@ -28,14 +26,15 @@ function handleError( message, data ){
 
 	// log stuff to the console for dev development
 	if ( process.env.NODE_ENV !== 'staging' || process.env.NODE_ENV !== 'production'){
-		log.dump(message);
-		log.dump(data);
+		
+		console.log(util.inspect(data, {colors: true, depth: depth }));
 	}
 
 	var extraData = JSON.stringify( data );
 	var configData = JSON.stringify( config );
 
-	log.error(message, extraData);
+	// this should also be logged to a file.
+	console.log()
 
 	// send an email for production and staging
 	if ( process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
