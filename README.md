@@ -21,3 +21,9 @@ Various functions helpful in Node development.
 
 ### faye/FayeService.js
 A starting point for using the GREAT NPM module 'Faye'. It has the server creation and broadcasting functions all in this one class. I love faye.
+
+### cron/CronScript.js
+An example of running a node script as a child process as a cron job.
+
+#### ClassTemplate.js
+A template for node classes.
