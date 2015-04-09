@@ -28,7 +28,7 @@ function runTillExit(){
 		function(){
 			// let them know
 			console.log('about to exit');
-			// exit this child nod precess
+			// exit this child node process
 			process.exit(0);
 		},
 		4000
