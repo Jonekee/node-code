@@ -12,6 +12,38 @@ var fs = require('fs');
 /* *************************** Public Methods ****************************** */
 
 
+/**
+ * I run a child process script.
+ * @param {String} scriptPath - I am the path to the precess to run.
+ * @param {String} callback - I am the callback function.
+ */
+function runScript(scriptPath, callback) {
+
+	var childProcess = require('child_process');
+
+	// keep track of whether callback has been invoked to prevent multiple invocations
+	var invoked = false;
+
+	var process = childProcess.fork(scriptPath);
+
+	// listen for errors as they may prevent the exit event from firing
+	process.on('error', function (err) {
+		if (invoked) return;
+		invoked = true;
+		callback(err);
+	});
+
+	// execute the callback once the process has finished running
+	process.on('exit', function (code) {
+		if (invoked) return;
+		invoked = true;
+		var err = code === 0 ? null : new Error('exit code ' + code);
+		callback(err);
+	});
+}
+exports.runScript = runScript;
+
+
 // NOTE: I just realized this is a dumb ass redundant thing to do. :/
 /**
  * I return if a file exists or not.
