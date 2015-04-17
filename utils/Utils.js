@@ -21,13 +21,13 @@ function dedupeArrayOfObjectsByKey( theArray, key ){
 	var dedupeArray = {};
 
 	for ( var x=0; x < theArray.length; x++ ){
-		dedupeArray[theArray[x][key]] = theArray[x];
+		dedupeArray[ theArray[x][key] ] = theArray[x];
 	}
 
 	var result = [];
 
 	for ( var i in dedupeArray ) {
-		result.push(dedupeArray[i]);
+		result.push( dedupeArray[i] );
 	}
 
 	return result;
