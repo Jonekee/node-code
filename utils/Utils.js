@@ -26,8 +26,8 @@ function dedupeArrayOfObjectsByKey( theArray, key ){
 
 	var result = [];
 
-	for ( var key in dedupeArray ) {
-		result.push(dedupeArray[key]);
+	for ( var i in dedupeArray ) {
+		result.push(dedupeArray[i]);
 	}
 
 	return result;
