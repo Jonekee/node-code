@@ -10,7 +10,29 @@ var fs = require('fs');
 
 /* *************************** Constructor Code **************************** */
 /* *************************** Public Methods ****************************** */
+/**
+ * I dedup an array of objects by key.
+ * @param theArray - I am the array to dedupe.
+ * @param key - I am the key to dedup the array by.
+ * @returns {Array}
+ */
+function dedupeArrayOfObjectsByKey( theArray, key ){
 
+	var dedupeArray = {};
+
+	for ( var x=0; x < theArray.length; x++ ){
+		dedupeArray[theArray[x][key]] = theArray[x];
+	}
+
+	var result = [];
+
+	for ( var key in dedupeArray ) {
+		result.push(dedupeArray[key]);
+	}
+
+	return result;
+}
+exports.dedupeArrayOfObjectsByKey = dedupeArrayOfObjectsByKey;
 
 /**
  * I run a child process script.
